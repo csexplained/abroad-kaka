@@ -1,4 +1,4 @@
-import { asyncHandeler } from "../utils/asyncHandler.js";
+import { asyncHandler } from "../utils/asyncHandler.js";
 import { ApiError } from "../utils/apierror.js";
 import { AdminUser as User } from "../models/adminuser.model.js";
 import { deletefromcloudinary, videodeletefromcloudinary, uploadOnCloudinary } from "../utils/cloudinary.js";
@@ -23,7 +23,7 @@ const genrateAccessandRefreshtokens = async (userid) => {
     }
 }
 
-const registerUser = asyncHandeler(async (req, res) => {
+const registerUser = asyncHandler(async (req, res) => {
 
     const { username, fullname, email, password } = req.body
     if ([fullname, username, email, password].some((field) => field?.trim() === "")) {
@@ -87,7 +87,7 @@ const registerUser = asyncHandeler(async (req, res) => {
 
 
 
-const loginUser = asyncHandeler(async (req, res) => {
+const loginUser = asyncHandler(async (req, res) => {
     // get data from req.body
     // username or email
     // find the user in db
@@ -156,7 +156,7 @@ const loginUser = asyncHandeler(async (req, res) => {
 // delete cookies or reset refreash token
 // 
 
-const logoutUser = asyncHandeler(async (req, res) => {
+const logoutUser = asyncHandler(async (req, res) => {
     await User.findByIdAndUpdate(req.user._id,
         {
             $unset: {
@@ -180,7 +180,7 @@ const logoutUser = asyncHandeler(async (req, res) => {
         .json(new ApiResponse(200, {}, "User Logged Out"))
 })
 
-const refreshAccessToken = asyncHandeler(async (req, res) => {
+const refreshAccessToken = asyncHandler(async (req, res) => {
 
     const incomingrefreshtoken = req.cookies.refreshToken || req.body.refreshToken
     if (!incomingrefreshtoken) {
@@ -233,7 +233,7 @@ const refreshAccessToken = asyncHandeler(async (req, res) => {
     }
 })
 
-const changeCurrentPassword = asyncHandeler(async (req, res) => {
+const changeCurrentPassword = asyncHandler(async (req, res) => {
     const { oldPassword, NewPassword } = req.body
 
     if (!NewPassword) {
@@ -261,12 +261,12 @@ const changeCurrentPassword = asyncHandeler(async (req, res) => {
         .json(new ApiResponse(200, {}, "Password Changed Successfully"))
 })
 
-const getCurrentUser = asyncHandeler(async (req, res) => {
+const getCurrentUser = asyncHandler(async (req, res) => {
     return res.status(200)
         .json(new ApiResponse(200, req.user, "Current Admin Fatced Success"))
 })
 
-const updateAccountDetails = asyncHandeler(async (req, res) => {
+const updateAccountDetails = asyncHandler(async (req, res) => {
 
     const { fullname, email } = req.body
 
