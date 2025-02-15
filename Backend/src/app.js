@@ -35,10 +35,16 @@ app.use(cookieParser())
 // routes import 
 import userRouter from "./routes/user.routes.js";
 import AdminRouter from "./routes/Admin.user.routes.js";
+import { ApiResponse } from "./utils/apiresponse.js";
+import UniversityRouter from "./routes/university.routes.js"
+
+app.get("/api/v1/", (req, res) => {
+    return res.status(200).json(new ApiResponse(200, { "MSG": "All Api's Are Working" }, "Working"))
+});
 
 // routes declaration
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/Admin', AdminRouter);
-
+app.use("/api/v1/university", UniversityRouter);
 
 export { app }

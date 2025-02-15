@@ -1,4 +1,4 @@
-import { University } from "../models/university.model";
+import { University } from "../models/university.model.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { ApiError } from "../utils/apierror.js";
 import { deletefromcloudinary, uploadOnCloudinary } from "../utils/cloudinary.js";
@@ -16,7 +16,7 @@ export const createUniversity = asyncHandler(async (req, res) => {
     let imageUrls = [];
 
     if (req.files?.logo) {
-        const uploadedLogo = await uploadOnCloudinary(req.files.logo.path);
+        const uploadedLogo = await uploadOnCloudinary(req.files.logo[0].path);
         logoUrl = uploadedLogo.secure_url;
     }
 
