@@ -67,7 +67,7 @@ export const updateUniversity = asyncHandler(async (req, res) => {
     }
 
     if (req.files?.logo) {
-        const uploadedLogo = await uploadOnCloudinary(req.files.logo.path);
+        const uploadedLogo = await uploadOnCloudinary(req.files.logo[0].path);
         updates.logo = uploadedLogo.secure_url;
     }
 
