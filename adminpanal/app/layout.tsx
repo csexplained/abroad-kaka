@@ -9,8 +9,6 @@ import '@fontsource/poppins/700.css';
 import { Toaster } from "@/components/ui/toaster"
 import Navbar from "@/components/Navbar";
 import Topbar from "@/components/Topbar";
-import Footer from "@/components/Footer";
-import MovingBanner from "@/components/GreenLine";
 import ReduxProvider from "@/store/Provider";
 
 const geistSans = Geist({
