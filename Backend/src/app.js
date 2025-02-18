@@ -34,7 +34,7 @@ app.use(cookieParser())
 
 // routes import 
 import userRouter from "./routes/user.routes.js";
-import AdminRouter from "./routes/Admin.user.routes.js";
+import AdminRouter from "./routes/admin.user.routes.js";
 import { ApiResponse } from "./utils/apiresponse.js";
 import UniversityRouter from "./routes/university.routes.js"
 
