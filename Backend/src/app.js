@@ -15,7 +15,7 @@ const corsarry = [
 ]
 
 app.use(cors({
-    origin: corsarry,
+    origin: "*",
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin'],
     exposedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept'],
