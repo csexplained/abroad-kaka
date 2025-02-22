@@ -10,6 +10,7 @@ interface UniversityFormData {
     country: string;
     city: string;
     address: string;
+    cords: string;
     description: string;
     website?: string;
     contactEmail?: string;
@@ -27,6 +28,7 @@ const AddUniversityPage = () => {
         country: "",
         city: "",
         address: "",
+        cords: "",
         description: "",
         website: "",
         contactEmail: "",
@@ -287,6 +289,19 @@ const AddUniversityPage = () => {
                             type="tel"
                             id="contactPhone"
                             value={formData.contactPhone}
+                            onChange={handleChange}
+                            className="mt-1 w-full p-3 border border-gray-300 rounded-lg"
+                            disabled={loading}
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="contactPhone" className="block text-sm font-medium text-gray-700">
+                            Cords of Location
+                        </label>
+                        <input
+                            type="text"
+                            id="cords"
+                            value={formData.cords}
                             onChange={handleChange}
                             className="mt-1 w-full p-3 border border-gray-300 rounded-lg"
                             disabled={loading}

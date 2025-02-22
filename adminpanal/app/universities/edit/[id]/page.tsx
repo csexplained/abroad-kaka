@@ -12,6 +12,7 @@ interface UniversityFormData {
     country: string;
     city: string;
     address: string;
+    cords: string;
     description: string;
     website?: string;
     contactEmail?: string;
@@ -29,6 +30,7 @@ const EditUniversityPage = () => {
         country: "",
         city: "",
         address: "",
+        cords: "",
         description: "",
         website: "",
         contactEmail: "",
@@ -63,6 +65,7 @@ const EditUniversityPage = () => {
             setFormData({
                 name: university.name,
                 country: university.country,
+                cords: university.cords,
                 city: university.city,
                 address: university.address,
                 description: university.description,
@@ -363,6 +366,19 @@ const EditUniversityPage = () => {
                             type="tel"
                             id="contactPhone"
                             value={formData.contactPhone}
+                            onChange={handleChange}
+                            className="mt-1 w-full p-3 border border-gray-300 rounded-lg"
+                            disabled={loading}
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="cords" className="block text-sm font-medium text-gray-700">
+                            Cords for location
+                        </label>
+                        <input
+                            type="tel"
+                            id="cords"
+                            value={formData.cords}
                             onChange={handleChange}
                             className="mt-1 w-full p-3 border border-gray-300 rounded-lg"
                             disabled={loading}
