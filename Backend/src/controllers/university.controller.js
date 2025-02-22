@@ -6,9 +6,9 @@ import { ApiResponse } from '../utils/apiresponse.js';
 
 // Create a new university with validation and Cloudinary upload
 export const createUniversity = asyncHandler(async (req, res) => {
-    const { name, country, city, address, description, website, contactEmail, contactPhone } = req.body;
+    const { name, country, city, cords, address, description, website, contactEmail, contactPhone } = req.body;
 
-    if (!name || !country || !city || !address || !description) {
+    if (!name || !country || !city || !address || !description || !cords) {
         throw new ApiError(400, "All required fields must be provided");
     }
 
@@ -27,7 +27,7 @@ export const createUniversity = asyncHandler(async (req, res) => {
         }
     }
 
-    const university = await University.create({ name, country, city, address, description, logo: logoUrl, images: imageUrls, website, contactEmail, contactPhone });
+    const university = await University.create({ name, country, cords, city, address, description, logo: logoUrl, images: imageUrls, website, contactEmail, contactPhone });
 
     res.status(201).json(new ApiResponse(201, university, "University created successfully"));
 });
@@ -62,7 +62,7 @@ export const updateUniversity = asyncHandler(async (req, res) => {
     const { id } = req.params;
     const updates = req.body;
 
-    if (!updates.name || !updates.country || !updates.city || !updates.address || !updates.description) {
+    if (!updates.name || !updates.country || !updates.city || !updates.address || !updates.description || !updates.cords) {
         throw new ApiError(400, "All required fields must be provided");
     }
 

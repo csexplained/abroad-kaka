@@ -34,6 +34,11 @@ const universitySchema = new Schema(
             required: false,
             trim: true,
         },
+        cords: {
+            type: String,
+            required: true,
+            trim: true,
+        },
         images: [
             {
                 type: String,
